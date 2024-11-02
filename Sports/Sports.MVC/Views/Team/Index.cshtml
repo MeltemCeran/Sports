@@ -1,12 +1,14 @@
 ﻿@using Sports.MVC.Models.Concrete
-@model List<BranchViewModel>
+@model List<TeamViewModel>
 
-<a class="btn btn-success" role="button" asp-controller="Branch" asp-action="Add">Yeni</a>
+<a class="btn btn-success" role="button" asp-controller="Team" asp-action="Add">Yeni</a>
 <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Adı</th>
+            <th scope="col">TeamName</th>
+            <th scope="col">FoundedYear</th>
+            <th scope="col">City</th>
             <th scope="col">İşlemler</th>
             
         </tr>
@@ -14,16 +16,16 @@
     <tbody>
         @if (Model.Any())
         {
-            @foreach (BranchViewModel branch in Model)
+            @foreach (TeamViewModel team in Model)
             {
                 <tr>
-                    
-                    <td>@branch.Name</td>
+
+                    <td>@team.TeamName</td>
                     
                     <td>
                         <div class="btn-group" role="group">
-                            <a asp-controller="Branch" asp-action="Edit" asp-route-id="@branch.Id" role="button" class="btn btn-warning">Düzenle</a>
-                            <a asp-controller="Branch" asp-action="Remove" asp-route-id="@branch.Id" role="button" class="btn btn-danger">Sil</a>
+                            <a asp-controller="Team" asp-action="Edit" asp-route-id="@team.Id" role="button" class="btn btn-warning">Düzenle</a>
+                            <a asp-controller="Team" asp-action="Remove" asp-route-id="@team.Id" role="button" class="btn btn-danger">Sil</a>
                         </div>
                     </td>
 
@@ -33,7 +35,7 @@
         else
         {
             <tr>
-                <td colspan="2">
+                <td colspan="4">
                     <p class="text-muted text-center">Liste boş</p>
                 </td>
             </tr>

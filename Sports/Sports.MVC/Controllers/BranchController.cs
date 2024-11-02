@@ -33,9 +33,9 @@ namespace Sports.MVC.Controllers
 
             List<Branch> branches = _context.Branches.Where(b => b.IsDeleted == false && b.IsActive == true).ToList();
 
-            List<BranchViewModel> bracnhList = _mapper.Map<List<BranchViewModel>>(branches);
+            List<BranchViewModel> branchList = _mapper.Map<List<BranchViewModel>>(branches);
 
-            ViewBag.BranchList = bracnhList;
+            ViewBag.BranchList = branchList;
 
             return View(model);
         }
