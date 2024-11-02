@@ -1,0 +1,41 @@
+﻿@using Sports.MVC.Models.Concrete
+@model List<BranchViewModel>
+
+<a class="btn btn-success" role="button" asp-controller="Branch" asp-action="Add">Yeni</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Adı</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (BranchViewModel branch in Model)
+            {
+                <tr>
+                    
+                    <td>@branch.Name</td>
+                    
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Branch" asp-action="Edit" asp-route-id="@branch.Id" role="button" class="btn btn-warning">Düzenle</a>
+                            <a asp-controller="Branch" asp-action="Remove" asp-route-id="@branch.Id" role="button" class="btn btn-danger">Sil</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="1">
+                    <p class="text-muted text-center">Liste boş</p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

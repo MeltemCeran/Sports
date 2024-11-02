@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sports.MVC.Context;
 
@@ -11,9 +12,11 @@ using Sports.MVC.Context;
 namespace Sports.MVC.Migrations
 {
     [DbContext(typeof(SportsDbContext))]
-    partial class SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241102132042_CrosTablesFKUpdate")]
+    partial class CrosTablesFKUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

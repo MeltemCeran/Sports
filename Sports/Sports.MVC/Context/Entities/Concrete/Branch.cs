@@ -7,7 +7,7 @@ namespace Sports.MVC.Context.Entities.Concrete
         public string Name { get; set; }
         public virtual ICollection<Player> Players { get; set; }
         public virtual ICollection<Game> Games { get; set; }
-
+        public virtual ICollection<BranchTeam> BranchTeam { get; set; } = new List<BranchTeam>();
         public virtual ICollection<GameStatistic> GameStatistics { get; set; } = new List<GameStatistic>();
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Sports.MVC.Context;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SportsDbContext>(opt =>{
        opt.UseSqlServer(builder.Configuration.GetConnectionString("SportsDb"));
 });
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

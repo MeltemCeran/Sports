@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sports.MVC.Context;
 
@@ -11,9 +12,11 @@ using Sports.MVC.Context;
 namespace Sports.MVC.Migrations
 {
     [DbContext(typeof(SportsDbContext))]
-    partial class SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241102131234_BranchTableUpdateColum")]
+    partial class BranchTableUpdateColum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,21 @@ namespace Sports.MVC.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("BranchTeam", b =>
+                {
+                    b.Property<int>("BranchesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BranchesId", "TeamsId");
+
+                    b.HasIndex("TeamsId");
+
+                    b.ToTable("BranchTeam");
+                });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Branch", b =>
                 {
@@ -255,12 +273,17 @@ namespace Sports.MVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("TeamId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BranchId");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Players");
                 });
@@ -348,16 +371,31 @@ namespace Sports.MVC.Migrations
                     b.ToTable("Teams");
                 });
 
+            modelBuilder.Entity("BranchTeam", b =>
+                {
+                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Branch", null)
+                        .WithMany()
+                        .HasForeignKey("BranchesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Team", null)
+                        .WithMany()
+                        .HasForeignKey("TeamsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
                 {
                     b.HasOne("Sports.MVC.Context.Entities.Concrete.Branch", "Branch")
-                        .WithMany("BranchTeam")
+                        .WithMany()
                         .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sports.MVC.Context.Entities.Concrete.Team", "Team")
-                        .WithMany("BranchTeam")
+                        .WithMany()
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -437,19 +475,23 @@ namespace Sports.MVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Team", null)
+                        .WithMany("Players")
+                        .HasForeignKey("TeamId");
+
                     b.Navigation("Branch");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.PlayerTeam", b =>
                 {
                     b.HasOne("Sports.MVC.Context.Entities.Concrete.Player", "Player")
-                        .WithMany("PlayerTeam")
+                        .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sports.MVC.Context.Entities.Concrete.Team", "Team")
-                        .WithMany("PlayerTeam")
+                        .WithMany()
                         .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -461,8 +503,6 @@ namespace Sports.MVC.Migrations
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Branch", b =>
                 {
-                    b.Navigation("BranchTeam");
-
                     b.Navigation("GameStatistics");
 
                     b.Navigation("Games");
@@ -478,15 +518,11 @@ namespace Sports.MVC.Migrations
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Player", b =>
                 {
                     b.Navigation("GameStatistics");
-
-                    b.Navigation("PlayerTeam");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Team", b =>
                 {
                     b.Navigation("AwayMatches");
-
-                    b.Navigation("BranchTeam");
 
                     b.Navigation("GameStatistices");
 
@@ -494,7 +530,7 @@ namespace Sports.MVC.Migrations
 
                     b.Navigation("HomeMatches");
 
-                    b.Navigation("PlayerTeam");
+                    b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
         }
