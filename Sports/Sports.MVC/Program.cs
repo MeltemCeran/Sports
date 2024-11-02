@@ -1,7 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Sports.MVC.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SportsDbContext>(opt =>{
+       opt.UseSqlServer(builder.Configuration.GetConnectionString("SportsDb"));
+});
 
 var app = builder.Build();
 
