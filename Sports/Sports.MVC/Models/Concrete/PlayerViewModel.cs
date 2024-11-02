@@ -1,8 +1,9 @@
-﻿using Sports.MVC.Context.Entities.Abstract;
+﻿using Sports.MVC.Context.Entities.Concrete;
+using Sports.MVC.Models.Abstract;
 
-namespace Sports.MVC.Context.Entities.Concrete
+namespace Sports.MVC.Models.Concrete
 {
-    public class Player : BaseEntity
+    public class PlayerViewModel : BaseViewModel
     {
         public string PlayerName { get; set; }
         public string PlayerSurname { get; set; }

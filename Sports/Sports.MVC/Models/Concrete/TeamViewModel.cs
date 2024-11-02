@@ -1,9 +1,9 @@
-﻿using Sports.MVC.Context.Entities.Abstract;
-using System.Text.RegularExpressions;
+﻿using Sports.MVC.Context.Entities.Concrete;
+using Sports.MVC.Models.Abstract;
 
-namespace Sports.MVC.Context.Entities.Concrete
+namespace Sports.MVC.Models.Concrete
 {
-    public class Team : BaseEntity
+    public class TeamViewModel : BaseViewModel
     {
         public string TeamName { get; set; }
         public DateOnly FoundedYear { get; set; }
