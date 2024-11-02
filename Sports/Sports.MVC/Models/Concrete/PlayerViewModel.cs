@@ -9,6 +9,7 @@ namespace Sports.MVC.Models.Concrete
         public string PlayerSurname { get; set; }
         public DateTime PlayerBirthDate { get; set; }
         public string Gender { get; set; }
+        public string BranchName { get; set; }
         public int BranchId { get; set; }
         public Branch Branch { get; set; }
         public virtual ICollection<GameStatistic> GameStatistics { get; set; } = new List<GameStatistic>();

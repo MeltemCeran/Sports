@@ -51,7 +51,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
@@ -89,7 +89,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("BranchTeams");
+                    b.ToTable("BranchTeams", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Game", b =>
@@ -144,7 +144,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.GameStatistic", b =>
@@ -214,7 +214,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("GameStatistics");
+                    b.ToTable("GameStatistics", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Player", b =>
@@ -262,7 +262,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Players");
+                    b.ToTable("Players", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.PlayerTeam", b =>
@@ -306,7 +306,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("PlayerTeams");
+                    b.ToTable("PlayerTeams", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Team", b =>
@@ -345,7 +345,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams");
+                    b.ToTable("Teams", (string)null);
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
