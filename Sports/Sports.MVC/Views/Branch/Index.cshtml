@@ -21,6 +21,7 @@
                     }
                     <div class="card-body">
                         <h5 class="card-title">@branch.Name</h5> <!-- Branş ismini buradan alıyoruz -->
+                        <h3 class="card-text">@branch.Id</h3>
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach (var team in branch.BranchTeam)
@@ -29,9 +30,9 @@
                         }
                     </ul>
                     <div class="card-body">
-                        <a class="btn btn-success" role="button" asp-controller="Team" asp-action="Add">Yeni Takım Ekle</a> 
-                        <a class="btn btn-danger align-content-center" role="button" asp-controller="Branch" asp-action="Remove">Branşı sil</a>
-                        <a class="btn btn-warning align-content-center" role="button" asp-controller="Branch" asp-action="Edit">Branşı Düzenle</a>
+                        <a class="btn btn-success" role="button" asp-controller="Team" asp-action="Add">Yeni Takım Ekle</a>
+                        <a class="btn btn-danger align-content-center" role="button" asp-controller="Branch" asp-action="Remove" asp-route-id="@branch.Id">Branşı sil</a>
+                        <a class="btn btn-warning align-content-center" role="button" asp-controller="Branch" asp-action="Edit" asp-route-id="@branch.Id">Branşı Düzenle</a>
                     </div>
                 </div>
             </div>
