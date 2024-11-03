@@ -6,9 +6,9 @@ namespace Sports.MVC.Models.Concrete
     public class BranchViewModel : BaseViewModel
     {
         public string Name { get; set; }
-  //      public virtual ICollection<Player> Players { get; set; }
-  //      public virtual ICollection<Game> Games { get; set; }
-		//public virtual ICollection<BranchTeam> BranchTeam { get; set; } = new List<BranchTeam>();
-		//public virtual ICollection<GameStatistic> GameStatistics { get; set; } = new List<GameStatistic>();
+        public  List<PlayerViewModel> Players { get; set; } = new List<PlayerViewModel>();  
+        public  List<GameViewModel> Games { get; set; } = new List<GameViewModel>();
+        public  List<BranchTeamViewModel> BranchTeam { get; set; } = new List<BranchTeamViewModel>();
+        
     }
 }

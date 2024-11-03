@@ -4,11 +4,11 @@ using Sports.MVC.Models.Concrete;
 
 namespace Sports.MVC.MapperProfiles
 {
-	public class BranchProfile : Profile
+	public class PlayerTeamProfile : Profile
 	{
-		public BranchProfile()
+		public PlayerTeamProfile()
 		{
-			CreateMap<Branch, BranchViewModel>()
+			CreateMap<PlayerTeam, PlayerTeamViewModel>()
 			.ReverseMap();
 		}
 	}

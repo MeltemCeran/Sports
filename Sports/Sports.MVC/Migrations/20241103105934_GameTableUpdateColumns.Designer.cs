@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sports.MVC.Context;
 
@@ -11,9 +12,11 @@ using Sports.MVC.Context;
 namespace Sports.MVC.Migrations
 {
     [DbContext(typeof(SportsDbContext))]
-    partial class SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241103105934_GameTableUpdateColumns")]
+    partial class GameTableUpdateColumns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
@@ -89,7 +92,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("BranchTeams", (string)null);
+                    b.ToTable("BranchTeams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Game", b =>
@@ -147,56 +150,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Games", (string)null);
-                });
-
-            modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.GameInfo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GameId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsHomeTeam")
-                        .HasColumnType("bit");
-
-                    b.Property<byte>("Score")
-                        .HasColumnType("tinyint");
-
-                    b.Property<int>("StatusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TeamId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("StatusId");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("GameInfos", (string)null);
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Player", b =>
@@ -244,7 +198,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Players", (string)null);
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.PlayerTeam", b =>
@@ -288,39 +242,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("PlayerTeams", (string)null);
-                });
-
-            modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Status", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("StatusName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("PlayerTeams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Team", b =>
@@ -359,7 +281,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
@@ -410,33 +332,6 @@ namespace Sports.MVC.Migrations
                     b.Navigation("Branch");
 
                     b.Navigation("HomeTeam");
-                });
-
-            modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.GameInfo", b =>
-                {
-                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Sports.MVC.Context.Entities.Concrete.Team", "Team")
-                        .WithMany()
-                        .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Game");
-
-                    b.Navigation("Status");
-
-                    b.Navigation("Team");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Player", b =>

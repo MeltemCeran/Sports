@@ -20,10 +20,13 @@ namespace Sports.MVC.Controllers
 
         public IActionResult Index()
         {
-            List<Branch> branches = _context.Branches.Where(b=>b.IsDeleted == false).ToList();
+            List<Branch> branches = _context.Branches
+                .Include(b => b.BranchTeam)
+                    .ThenInclude(b => b.Team) 
+                .Where(b=>b.IsDeleted == false).ToList();
+
             List<BranchViewModel> model = _mapper.Map<List<BranchViewModel>>(branches);
             return View(model);
-			//.Include(b=>b.BranchTeam).ThenInclude(b=>b.Team).Include(b=>b.Players).Include(b=>b.Games)
 		}
 
 		[HttpGet]
@@ -31,7 +34,7 @@ namespace Sports.MVC.Controllers
         {
             BranchViewModel model = new BranchViewModel();
 
-            List<Branch> branches = _context.Branches.Where(b => b.IsDeleted == false && b.IsActive == true).ToList();
+            List<Branch> branches = _context.Branches.Where(b => b.IsDeleted == false ).ToList();
 
             List<BranchViewModel> branchList = _mapper.Map<List<BranchViewModel>>(branches);
 

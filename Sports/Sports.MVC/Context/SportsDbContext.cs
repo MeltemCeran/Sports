@@ -13,7 +13,9 @@ namespace Sports.MVC.Context
         public DbSet<Game> Games { get; set; }
         public DbSet<PlayerTeam> PlayerTeams { get; set; }
         public DbSet<BranchTeam> BranchTeams { get; set; }
-        public DbSet<GameStatistic> GameStatistics { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<GameInfo> GameInfos { get; set; }
+        
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

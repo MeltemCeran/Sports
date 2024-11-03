@@ -10,8 +10,6 @@ namespace Sports.MVC.Context.Entities.Concrete
         public string Gender { get; set; }
         public int BranchId { get; set; }
         public Branch Branch { get; set; }
-        public virtual ICollection<GameStatistic> GameStatistics { get; set; } = new List<GameStatistic>();
-
         public virtual ICollection<PlayerTeam> PlayerTeam { get; set; } = new List<PlayerTeam>();
     }
 }

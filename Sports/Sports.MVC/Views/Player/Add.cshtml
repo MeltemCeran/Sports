@@ -27,21 +27,19 @@
 				<input asp-for="Gender" class="form-control" />
 				<span asp-validation-for="Gender" class="text-danger"></span>
 			</div>
+
 			<div class="col-md-12">
-				<label asp-for="BranchId" class="form-label">Branşınız</label>
-				<input asp-for="BranchId" class="form-control" />
+				<label asp-for="BranchId" class="form-label"></label>
+				@* <input asp-for="CityId" class="form-control" /> *@
+
+				<select name="BranchId" id="BranchId" class="form-select">
+					@foreach (BranchViewModel branch in (List<BranchViewModel>)ViewBag.BranchList)
+					{
+						<option value="@branch.Id">@branch.Name</option>
+					}
+				</select>
+
 				<span asp-validation-for="BranchId" class="text-danger"></span>
-			</div>
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-6">
-						<label asp-for="BranchId" class="form-label"></label>
-						
-						<select asp-for="BranchId" class="form-select"></select>
-						<span asp-validation-for="BranchId" class="text-danger"></span>
-					</div>
-					
-				</div>
 			</div>
 
 

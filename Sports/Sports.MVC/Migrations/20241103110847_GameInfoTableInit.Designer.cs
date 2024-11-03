@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Sports.MVC.Context;
 
@@ -11,9 +12,11 @@ using Sports.MVC.Context;
 namespace Sports.MVC.Migrations
 {
     [DbContext(typeof(SportsDbContext))]
-    partial class SportsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241103110847_GameInfoTableInit")]
+    partial class GameInfoTableInit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Branches", (string)null);
+                    b.ToTable("Branches");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>
@@ -89,7 +92,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("BranchTeams", (string)null);
+                    b.ToTable("BranchTeams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Game", b =>
@@ -147,7 +150,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Games", (string)null);
+                    b.ToTable("Games");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.GameInfo", b =>
@@ -196,7 +199,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("GameInfos", (string)null);
+                    b.ToTable("GameInfos");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Player", b =>
@@ -244,7 +247,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.ToTable("Players", (string)null);
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.PlayerTeam", b =>
@@ -288,7 +291,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("PlayerTeams", (string)null);
+                    b.ToTable("PlayerTeams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Status", b =>
@@ -320,7 +323,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses", (string)null);
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.Team", b =>
@@ -359,7 +362,7 @@ namespace Sports.MVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("Sports.MVC.Context.Entities.Concrete.BranchTeam", b =>

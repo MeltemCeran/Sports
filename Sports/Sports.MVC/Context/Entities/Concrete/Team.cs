@@ -13,6 +13,7 @@ namespace Sports.MVC.Context.Entities.Concrete
         public virtual ICollection<Game> Games { get; set; } = new List<Game>();
         public virtual ICollection<Game> HomeMatches { get; set; } = new List<Game>();
         public virtual ICollection<Game> AwayMatches { get; set; } = new List<Game>();
-        public virtual ICollection<GameStatistic> GameStatistices { get; set; } = new List<GameStatistic>();
+        public virtual ICollection<GameInfo> GameInfos { get; set; } = new List<GameInfo>();
+        
     }
 }
