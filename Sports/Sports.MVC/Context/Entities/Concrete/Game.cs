@@ -14,7 +14,7 @@ namespace Sports.MVC.Context.Entities.Concrete
         public Team HomeTeam { get; set; } 
         public Team AwayTeam { get; set; }
 
-        public virtual ICollection<GameInfo> GameInfos { get; set; } = new List<GameInfo>();
+        public virtual ICollection<GameInfo> GameInfos { get; set; } 
        
     }
 }

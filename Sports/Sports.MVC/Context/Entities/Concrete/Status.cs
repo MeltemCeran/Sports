@@ -6,6 +6,6 @@ namespace Sports.MVC.Context.Entities.Concrete
 	{
         public string StatusName { get; set; }
 
-		public virtual ICollection<GameInfo> GameInfos { get; set; } = new List<GameInfo>();
+		public virtual ICollection<GameInfo> GameInfos { get; set; } 
     }
 }
